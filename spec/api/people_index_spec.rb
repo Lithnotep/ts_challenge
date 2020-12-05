@@ -28,5 +28,6 @@ describe "People" do
     expect(person['data']['id']).to eq(person3.id)
     expect(person['data']['first']).to eq(person3.first)
     expect(person['data']['last']).to eq(person3.last)
+  end
 
 end
