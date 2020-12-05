@@ -4,8 +4,8 @@ class PersonSerializer
         people.map do |person|
             {
                 id: person.id,
-                first_name: person.first_name,
-                last_name: person.last_name
+                first: person.first,
+                last: person.last
              }
         end
     end

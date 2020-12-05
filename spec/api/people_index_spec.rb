@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe "People Index" do
   it "can get all people" do
-    person1 = Person.create(first_name: 'max', last_name: 'mitrani')
-    person2 = Person.create(first_name: 'ben', last_name: 'ericson')
-    person3 = Person.create(first_name: 'tyler', last_name: 'billy')
-    person4 = Person.create(first_name: 'john', last_name: 'gerno')
-    person5 = Person.create(first_name: 'katie', last_name: 'rella')
+    person1 = Person.create(first: 'max', last: 'mitrani')
+    person2 = Person.create(first: 'ben', last: 'ericson')
+    person3 = Person.create(first: 'tyler', last: 'billy')
+    person4 = Person.create(first: 'john', last: 'gerno')
+    person5 = Person.create(first: 'katie', last: 'rella')
 
     get '/api/people'
 
