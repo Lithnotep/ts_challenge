@@ -29,10 +29,31 @@ describe "People" do
     expect(person['data']['first']).to eq(person3.first)
     expect(person['data']['last']).to eq(person3.last)
   end
+  it "can list people in order last then first" do
+    person3 = Person.create(first: 'sarah', last: 'ericson')
+    person1 = Person.create(first: 'max', last: 'mitrani')
+    person5 = Person.create(first: 'derek', last: 'rella')
+    person2 = Person.create(first: 'ben', last: 'ericson')
+    person4 = Person.create(first: 'billy', last: 'gerno')
+    person6 = Person.create(first: 'katie', last: 'rella')
+
+    get '/api/people'
+    people = JSON.parse(response.body)
+    expect(people['data'][0]).to eq(person2.id)
+    expect(people['data'][1]).to eq(person3.id)
+    expect(people['data'][2]).to eq(person4.id)
+    expect(people['data'][3]).to eq(person1.id)
+    expect(people['data'][4]).to eq(person5.id)
+    expect(people['data'][5]).to eq(person6.id)
+
+
+  end
+
   it "can create a person" do
     
     post "/api/person", :params => { first: "Tommy", last: "Johnson"}
     expect(response).to be_successful
+    person = JSON.parse(response.body)
     expect(person['data']['first']).to eq("Tommy")
     expect(person['data']['last']).to eq("Johnson")
   end
