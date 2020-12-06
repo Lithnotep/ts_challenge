@@ -56,4 +56,31 @@ describe "People" do
     expect(person['data']['first']).to eq("Tommy")
     expect(person['data']['last']).to eq("Johnson")
   end
+  it "can return sad paths for person GET " do
+    person1 = Person.create(first: 'max', last: 'mitrani')
+    person2 = Person.create(first: 'ben', last: 'ericson')
+    person3 = Person.create(first: 'tyler', last: 'billy')
+    person4 = Person.create(first: 'john', last: 'gerno')
+    person5 = Person.create(first: 'katie', last: 'rella')
+    
+    get "/api/person/illy/tom"
+
+    
+    person = JSON.parse(response.body)
+    expect(person['errors']).to eq("There is no person by that name.")
+  end
+  it "can't create a person without last name" do
+    
+    post "/api/person", :params => { first: "Tommy"}
+    expect(response).to be_successful
+    person = JSON.parse(response.body)
+    expect(person['errors']).to eq("Last can't be blank")
+  end
+  it "can't create a person without last first" do
+    
+    post "/api/person", :params => { last: "tyler"}
+    expect(response).to be_successful
+    person = JSON.parse(response.body)
+    expect(person['errors']).to eq("First can't be blank")
+  end
 end
