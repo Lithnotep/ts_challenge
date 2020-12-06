@@ -1,7 +1,8 @@
 class Api::PeopleController < ApplicationController
   
     def index
-         people = PersonSerializer.new.people_serialize(Person.all)
+        order = Person.order('last ASC, first ASC')
+        people = PersonSerializer.new.people_serialize(order)
         render json: {data: people}
     end
 

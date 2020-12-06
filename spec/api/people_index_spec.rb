@@ -39,16 +39,15 @@ describe "People" do
 
     get '/api/people'
     people = JSON.parse(response.body)
-    expect(people['data'][0]).to eq(person2.id)
-    expect(people['data'][1]).to eq(person3.id)
-    expect(people['data'][2]).to eq(person4.id)
-    expect(people['data'][3]).to eq(person1.id)
-    expect(people['data'][4]).to eq(person5.id)
-    expect(people['data'][5]).to eq(person6.id)
+    expect(people['data'][0]['id']).to eq(person2.id)
+    expect(people['data'][1]['id']).to eq(person3.id)
+    expect(people['data'][2]['id']).to eq(person4.id)
+    expect(people['data'][3]['id']).to eq(person1.id)
+    expect(people['data'][4]['id']).to eq(person5.id)
+    expect(people['data'][5]['id']).to eq(person6.id)
 
 
   end
-
   it "can create a person" do
     
     post "/api/person", :params => { first: "Tommy", last: "Johnson"}
