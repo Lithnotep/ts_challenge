@@ -20,7 +20,7 @@ describe "People" do
     person3 = Person.create(first: 'tyler', last: 'billy')
     person4 = Person.create(first: 'john', last: 'gerno')
     person5 = Person.create(first: 'katie', last: 'rella')
-
+    
     get "/api/person/#{person3.last}/#{person3.first}"
 
     expect(response).to be_successful
@@ -29,5 +29,11 @@ describe "People" do
     expect(person['data']['first']).to eq(person3.first)
     expect(person['data']['last']).to eq(person3.last)
   end
-
+  it "can create a person" do
+    
+    post "/api/person", :params => { first: "Tommy", last: "Johnson"}
+    expect(response).to be_successful
+    expect(person['data']['first']).to eq("Tommy")
+    expect(person['data']['last']).to eq("Johnson")
+  end
 end
