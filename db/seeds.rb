@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "csv"
+
+CSV.foreach('db/data/mock_data_csv.csv', headers: true) do |row|
+    
+    Person.create!(first: row['first'], last: row['last']) 
+end
