@@ -1,24 +1,21 @@
-# README
+## Ruby Version 2.6.3
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## People
+### GET /people
+`
+{"data":[
+    ["Abrahamson","Donnell"],["Adamczewski","Erhard"],["Adao","Orin"],etc .....
+    ]
+ }
+`
+ 
+## Person
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### GET /person/{last_name}/{first_name}
+`
+{"data":
+  {"id":"381",
+  "first":"Phoebe",
+  "last":"Brandon"}
+}
+`
