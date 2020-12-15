@@ -7,7 +7,7 @@ class Api::PeopleController < ApplicationController
     end
 
     def show
-        person_data = Person.find_by(last: params['last'], first: params['first'])
+        person_data = Person.find_by(last: params['last'].capitalize, first: params['first'].capitalize)
         if person_data == nil
             render json: {
                 errors: "There is no person by that name.",
